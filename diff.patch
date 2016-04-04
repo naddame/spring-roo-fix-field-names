@@ -1,0 +1,81 @@
+diff --git a/addon-dbre/addon/src/main/java/org/springframework/roo/addon/dbre/addon/DbreMetadata.java b/addon-dbre/addon/src/main/java/org/springframework/roo/addon/dbre/addon/DbreMetadata.java
+index 8c4077c..191716e 100644
+--- a/addon-dbre/addon/src/main/java/org/springframework/roo/addon/dbre/addon/DbreMetadata.java
++++ b/addon-dbre/addon/src/main/java/org/springframework/roo/addon/dbre/addon/DbreMetadata.java
+@@ -264,16 +264,15 @@ public class DbreMetadata extends AbstractItdTypeDetailsProvidingMetadataItem {
+                     .containsKey(owningSideTable) ? owningSideTables
+                     .get(owningSideTable) + 1 : 0;
+             owningSideTables.put(owningSideTable, tableCount);
+-            final String fieldSuffix = owningSideTables.get(owningSideTable) > 0 ? String
+-                    .valueOf(owningSideTables.get(owningSideTable)) : "";
++            final String fieldSuffix = "";//TODO (djh)  owningSideTables.get(owningSideTable) > 0 ? String.valueOf(owningSideTables.get(owningSideTable)) : "";
+ 
+             final boolean sameTable = owningSideTable.equals(inverseSideTable);
+ 
+             if (owningSideTable.equals(table)) {
+                 final JavaSymbolName fieldName = new JavaSymbolName(
+                         getInflectorPlural(DbreTypeUtils
+-                                .suggestFieldName(inverseSideTable))
+-                                + (sameTable ? "1" : fieldSuffix));
++                                .suggestFieldName(inverseSideTable)));
++                                //TODO (djh) + (sameTable ? "1" : fieldSuffix));
+                 final FieldMetadataBuilder fieldBuilder = getManyToManyOwningSideField(
+                         fieldName, joinTable, inverseSideTable,
+                         foreignKey1.getOnUpdate(), foreignKey1.getOnDelete());
+@@ -283,12 +282,12 @@ public class DbreMetadata extends AbstractItdTypeDetailsProvidingMetadataItem {
+             if (inverseSideTable.equals(table)) {
+                 final JavaSymbolName fieldName = new JavaSymbolName(
+                         getInflectorPlural(DbreTypeUtils
+-                                .suggestFieldName(owningSideTable))
+-                                + (sameTable ? "2" : fieldSuffix));
++                                .suggestFieldName(owningSideTable)));
++                                //TODO (djh) + (sameTable ? "2" : fieldSuffix));
+                 final JavaSymbolName mappedByFieldName = new JavaSymbolName(
+                         getInflectorPlural(DbreTypeUtils
+-                                .suggestFieldName(inverseSideTable))
+-                                + (sameTable ? "1" : fieldSuffix));
++                                .suggestFieldName(inverseSideTable)));
++                                //TODO (djh) + (sameTable ? "1" : fieldSuffix));
+                 final FieldMetadataBuilder fieldBuilder = getManyToManyInverseSideField(
+                         fieldName, mappedByFieldName, owningSideTable,
+                         foreignKey2.getOnUpdate(), foreignKey2.getOnDelete());
+@@ -341,8 +340,7 @@ public class DbreMetadata extends AbstractItdTypeDetailsProvidingMetadataItem {
+             }
+             else {
+                 final Short keySequence = foreignKey.getKeySequence();
+-                final String fieldSuffix = keySequence != null
+-                        && keySequence > 0 ? String.valueOf(keySequence) : "";
++                final String fieldSuffix = "";//TODO (djh)  keySequence != null && keySequence > 0 ? String.valueOf(keySequence) : "";
+                 fieldName = new JavaSymbolName(
+                         DbreTypeUtils.suggestFieldName(foreignTableName)
+                                 + fieldSuffix);
+@@ -409,8 +407,7 @@ public class DbreMetadata extends AbstractItdTypeDetailsProvidingMetadataItem {
+             }
+ 
+             final Short keySequence = exportedKey.getKeySequence();
+-            final String fieldSuffix = keySequence != null && keySequence > 0 ? String
+-                    .valueOf(keySequence) : "";
++            final String fieldSuffix = "";//TODO (djh)  keySequence != null && keySequence > 0 ? String.valueOf(keySequence) : "";
+             JavaSymbolName fieldName = new JavaSymbolName(
+                     getInflectorPlural(DbreTypeUtils
+                             .suggestFieldName(foreignTableName)) + fieldSuffix);
+@@ -467,8 +464,7 @@ public class DbreMetadata extends AbstractItdTypeDetailsProvidingMetadataItem {
+             final String foreignSchemaName = importedKeyForeignTable
+                     .getSchema().getName();
+             final Short keySequence = foreignKey.getKeySequence();
+-            final String fieldSuffix = keySequence != null && keySequence > 0 ? String
+-                    .valueOf(keySequence) : "";
++            final String fieldSuffix = "";//TODO (djh)  keySequence != null && keySequence > 0 ? String.valueOf(keySequence) : "";
+             final JavaSymbolName fieldName = new JavaSymbolName(
+                     DbreTypeUtils.suggestFieldName(foreignTableName)
+                             + fieldSuffix);
+@@ -531,8 +527,7 @@ public class DbreMetadata extends AbstractItdTypeDetailsProvidingMetadataItem {
+                 continue;
+             }
+             final Short keySequence = exportedKey.getKeySequence();
+-            final String fieldSuffix = keySequence != null && keySequence > 0 ? String
+-                    .valueOf(keySequence) : "";
++            final String fieldSuffix = "";//TODO (djh)  keySequence != null && keySequence > 0 ? String.valueOf(keySequence) : "";
+             JavaSymbolName fieldName = new JavaSymbolName(
+                     DbreTypeUtils.suggestFieldName(foreignTableName)
+                             + fieldSuffix);
