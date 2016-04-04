@@ -79,3 +79,4 @@ index 8c4077c..191716e 100644
              JavaSymbolName fieldName = new JavaSymbolName(
                      DbreTypeUtils.suggestFieldName(foreignTableName)
                              + fieldSuffix);
+
